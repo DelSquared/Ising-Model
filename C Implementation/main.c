@@ -3,6 +3,8 @@
 #include <time.h>
 #include <math.h>
 
+//I am aware of the issues regarding the difference between Ebar and <E> and I am working on resolving this somehow
+
 int main() //The [HC] tag in the comments is to notify hard-coded parameters. [UI] is user input
 {
     int i,j;
