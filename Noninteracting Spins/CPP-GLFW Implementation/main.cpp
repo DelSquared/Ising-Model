@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+//this code is incomplete
+
 void square(float i, float j,float side, float offsetX, float offsetY);
 void grid(float spacing,int number);
 
