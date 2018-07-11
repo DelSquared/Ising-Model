@@ -3,8 +3,6 @@
 #include <time.h>
 #include <math.h>
 
-//I am aware of the issues regarding the difference between Ebar and <E> and I am working on resolving this somehow
-
 int main() //The [HC] tag in the comments is to notify hard-coded parameters. [UI] is user input
 {
     int i,j;
@@ -16,8 +14,8 @@ int main() //The [HC] tag in the comments is to notify hard-coded parameters. [U
     int S [side][side]; //setting up square spin lattice
 
     int up=0, down=0; //Total up and down spins
-    int M=0,E=0; //Magnetisation, and total Energy
-    float Ebar=0,T=0.1,B=2; //Average energy per site, Temperature[UI], and External field[UI]
+    int M=0; //Magnetisation
+    float Ebar=0,T=0.1,B=2,E=0; //Average energy per site, Temperature[UI], External field[UI], and total Energy
     double Z=0; //Partition function
 
     printf("Input T: ");
@@ -36,13 +34,13 @@ int main() //The [HC] tag in the comments is to notify hard-coded parameters. [U
     }
     Z=(double)up*exp(B/T)+down*exp(-B/T); //Z=sum(exp(-E[i][j]/kT)) and E[i][j]=-B*S[i][j]
     M=up-down; //Determining M
-    E=abs(M*B); //Determining E
+    E=(float)abs(M*B); //Determining E
     Ebar=(float)E/(side*side); //Determining <E>
     printf("\nUp:\t%d\tDown:\t%d\n\n",up,down);
     printf("net M:\t%d\n",M);
     printf("Z:\t%f\n",Z);
-    printf("E:\t%d\n",E);
-    printf("<E>:\t%d\n",(B*up*exp(B/T)-B*down*exp(-B/T))/Z);
+    printf("E:\t%f\n",E);
+    printf("<E>:\t%f\n",(B*up*exp(B/T)-B*down*exp(-B/T))/Z);
     printf("Ebar:\t%f\n\n",Ebar);
     printf("\nP(U):\t%f\nP(D):\t%f\n\n",up*exp(B/T)/Z,down*exp(-B/T)/Z);
 
